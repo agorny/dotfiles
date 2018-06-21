@@ -31,7 +31,7 @@ CASE_SENSITIVE="true"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -53,7 +53,7 @@ CASE_SENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git common-aliases history sudo debian cp web-search)
+plugins=(git z common-aliases history docker vi-mode debian cp web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -64,14 +64,32 @@ export MAVEN_HOME=/home/adam/tools/apache-maven-3.3.9
 export HOME_BIN=/home/adam/bin
 
 #Aliases
-alias carew="~/printercare/printercare-web"
-alias carep="~/printercare/printercare-product"
-alias carem="~/printercare/monitor-client-java"
+alias cdoeng="cd ~/code/eapng_gitlab"
+alias buildall="cdoeng && gradle build -Pconfiguration=test -Pproduct=origami && docker-compose build  && docker-compose up --force-recreate"
 alias cl="clear"
 alias .="zsh"
-alias ts="zsh tools/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh"
-alias mci="mvn clean install"
+alias ts="cd /home/adam/tools/TeamSpeak3-Client-linux_amd64 && . ts3client_runscript.sh"
 
+alias vpno="netExtender  vpn.origamienergy.com:4433 -u adam.gorny -p Yell0wN0vember -d imagiro.ltd"
+#docker-compose related aliases
+alias dco='docker-compose'
+
+alias dcb='docker-compose build'
+alias dce='docker-compose exec'
+alias dcps='docker-compose ps'
+alias dcrestart='docker-compose restart'
+alias dcrm='docker-compose rm'
+alias dcr='docker-compose run'
+alias dcstop='docker-compose stop'
+alias dcup='docker-compose up'
+alias dcdn='docker-compose down'
+alias dcl='docker-compose logs'
+alias dclf='docker-compose logs -f'
+
+alias fixnet='sudo rm -f /etc/resolv.conf && sudo echo "nameserver 8.8.8.8" > ~/resolv.conf && sudo mv ~/resolv.conf /etc/resolv.conf && sudo service networking restart && sudo cat /etc/resolv.conf'
+
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'j
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -103,3 +121,9 @@ alias mci="mvn clean install"
 
 
 export PATH=$PATH:$JAVA_HOME/bin:$MAVEN_HOME/bin:$HOME_BIN
+export PATH="/home/adam/bin/Sencha/Cmd:$PATH"
+export PATH=$PATH:/home/agorny/tools/gradle-4.7/bin
+export _JAVA_OPTIONS="-Djava.io.tmpdir=/home/agorny/tmp"
+export GIT_EDITOR=vim
+export PATH="/home/agorny/bin/Sencha/Cmd:$PATH"
+export CATALINA_HOME="/home/agorny/tools/apache-tomcat-8.5.30"
