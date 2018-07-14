@@ -1,12 +1,16 @@
 call plug#begin('~/.vim/plugged')
-Plug 'nightsense/snow'
+"Plug 'nightsense/snow'
+Plug 'neutaaaaan/iosvkem'
+Plug 'mattn/emmet-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 call plug#end()
 
 
 filetype on
 filetype plugin on
 filetype indent on
-:set number
+:set nu
 :set hlsearch
 :set incsearch
 :imap jj <ESC>
@@ -17,9 +21,9 @@ filetype indent on
 :set softtabstop=2
 " when identing with '>'
 :set shiftwidth=2
-colorscheme snow
-set background=dark
 :set termguicolors
+"""""""""""""""""""""""""""""""""""
+" Not all terminals support this
 if &term =~ "xterm\\|rxvt"
   " use an orange cursor in insert mode
   let &t_SI = "\<Esc>]12;orange\x7"
@@ -30,3 +34,4 @@ if &term =~ "xterm\\|rxvt"
   autocmd VimLeave * silent !echo -ne "\033]112\007"
   " use \003]12;gray\007 for gnome-terminal and rxvt up to version 9.21
 endif
+"""""""""""""""""""""""""""""""""""
